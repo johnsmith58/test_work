@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <style>
+            .clonephonenumber{
+                display: none
+            }
+        </style>
+</head>
+<body>
+    <div class="container">
+        <div class="register-container">
+            
+            <div class="phone-item">
+                <label>Phone Number</label>
+                <button class="add-ph-btn">+</button><br>
+                <input type="text" class="input-data phone-number">
+            </div>
+
+            <div class="clonephonenumber">
+                <label>Phone Number</label>
+                <input type="text" class="input-data phone-number">
+            </div>
+
+        </div>
+
+        <!-- confirm container -->
+        <div class="confirm-container">
+
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+
+            var _parent = $("container");
+            var _parentRegister = $("register-container");
+
+            _parentRegister.find(".add-ph-btn").click(function(){
+                var phItem = _parent.find(".clonephonenum").clone().appendTo('.register-container').removeClass('clonephonenum').css("display", "block");
+        phItem.find('.del-btn').bind('click', function(){
+            this.closest('.phone-item').remove();
+        });
+            })
+
+        });
+    </script>
+    
+</body>
+</html>

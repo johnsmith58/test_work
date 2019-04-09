@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <script src="jquery.3.3.1.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        var stringFunc = {
+            value : '',
+
+
+            isEmail : function () {
+                var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(String(stringFunc.value).toLowerCase());
+                if(re == stringFunc.value) return true;
+                return false;
+            },
+            
+            isEmpty : function () {
+                if(stringFunc.value.trim() == '')return fale;
+                return true;
+            },
+
+            isURL : function () {
+                var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+                    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|'+ // domain name
+                    '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+                    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+                    '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+                    '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+                    if(!pattern.test(stringFunc.value)) return false;
+                    return true;
+            },
+            
+            
+            // isUnderfined : function (findStr, replaceStr){
+            //     // var findStr = $(".attendence-container").find("#input-name").val();
+
+            //     var replaceStr = 'Unknown User';
+            //     if(typeof stringFunc.value === undefined){
+            //         alert('not undefined');
+            //     }else{
+            //         var newStr = 'unknown user';
+            //         var str = stringFunc.value;
+            //         str.text.replace(newStr);
+            //     }
+
+            // },
+
+            isUnderfined : function (findStr, replaceStr) {
+                var findStr = '(800) 123 1134';
+                var replaceStr = document.body.innerHTML;
+                var regex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/gi;
+
+                if (regex.test(findStr)) {
+                    alert('bingo');
+                    var altrstr = '<span>'+findStr+'</span>';
+                    //var newaltr = bodytext.replace(avidno, altrstr);
+                    //var str_count = bodytext.match(avidno).length;  //4 matched
+
+                    document.body.innerHTML = altrstr;
+                    alert(findStr.length);
+                    find_count = findStr.length;
+                    for(var i=0;i<find_count;i++)
+                    {
+                    var newaltr = replaceStr.replace(findStr, altrstr);
+                    }
+                    
+
+                    // Valid international phone number
+                } else {
+                    alert('uupss');
+                    // Invalid international phone number
+                }
+            },
+
+            replaceAll : function (stringToFind, stringToReplace) {
+                if (stringToFind === stringToReplace) return this;
+        var temp = this;
+        var index = temp.indexOf(stringToFind);
+        while (index != -1) {
+            temp = temp.replace(stringToFind, stringToReplace);
+            index = temp.indexOf(stringToFind);
+        }
+        return temp;
+            }
+            
+        }
+
+        $(document).ready(function(){
+            // output isURL
+            // stringFunc.value = 'https://sdfasd';
+            
+            stringFunc.value = 'asds';
+            stringFunc.isUnderfined();
+            console.log(stringFunc.value);
+            // console.log(stringFunc.replaceAll());
+            // console.log(stringFunc.isEmail());
+            // console.log(stringFunc.isEmpty());
+            // console.log(stringFunc.isURL());
+            
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <label>Name</label>
+        <input type="text" id="input-name">
+    </div>
+</body>
+</html>
